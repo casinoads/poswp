@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+	<!-- Required meta tags -->
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+	<!-- Bootstrap CSS -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+		integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+	<title>Hello, world!</title>
+</head>
+
+<body class="container w-75 p-3" style="background-color: #778899;">
+	<form>
+		<div class="form-row">
+			<div class="form-group col-md-4">
+				<div class="dropdown">
+				<option value="AB">site</option>
+				<select id="locality-dropdown" name="locality">
+				</select>
+			</div>
+			</div>
+
+			<span class="navbar-brand mb-0 h1"> SITE:
+				<span class="navbar-brand mb-0 h1 text-white" id="site_urlselect" name="siteurlselect"></span>
+				<span class="navbar-brand mb-0 h1 text-white" id="site_userselect" name="siteuserselect"></span>
+				<span class="navbar-brand mb-0 h1 text-white" id="site_passselect" name="sitepassselect"></span>
+		</div>
+		<div class="form-group">
+			<label for="inputAddress">Address</label>
+			<input type="text" class="form-control" id="inputAddress" placeholder="1234 Main St">
+		</div>
+		<div class="form-group">
+			<label for="inputAddress2">Address 2</label>
+			<input type="text" class="form-control" id="inputAddress2" placeholder="Apartment, studio, or floor">
+		</div>
+		<div class="form-row">
+			<div class="form-group col-md-6">
+				<label for="inputCity">City</label>
+				<input type="text" class="form-control" id="inputCity">
+			</div>
+			<div class="form-group col-md-2">
+				<label for="inputZip">Zip</label>
+				<input type="text" class="form-control" id="inputZip">
+			</div>
+		</div>
+		<div class="form-group">
+			<div class="form-check">
+				<input class="form-check-input" type="checkbox" id="gridCheck">
+				<label class="form-check-label" for="gridCheck">
+					Check me out
+				</label>
+			</div>
+		</div>
+		<button type="submit" class="btn btn-primary">Sign in</button>
+	</form>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+	<script type="text/javascript">
+
+		//Build an array containing Customer records.
+
+		let dropdown = $('#locality-dropdown');
+
+		dropdown.empty();
+
+		dropdown.append('<option selected="true" disabled>SITE</option>');
+		dropdown.prop('selectedIndex', 0);
+
+		const url = 'kk.json';
+
+		// Populate dropdown with list of provinces
+		$.getJSON(url, function (data) {
+			$.each(data, function (key, entry) {
+				dropdown.append($('<option></option>').attr('value', entry.url).text(entry.url));
+			})
+		});
+		var selText = document.getElementById("locality-dropdown").value;  
+		
+		console.log(dropdown)
+	</script>
+
+	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+		integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+		crossorigin="anonymous"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+		integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+		crossorigin="anonymous"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+		integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+		crossorigin="anonymous"></script>
+</body>
+
+</html>
